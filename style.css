@@ -1,0 +1,62 @@
+    body {
+        height: auto;
+        width: auto;
+        background-color: rgb(169, 204, 153);
+    }
+    
+    .form_reg {
+        background-color: rgba(115, 236, 15, 0.3);
+        padding: 30px;
+        border: 1px solid lime;
+        border-radius: 5px;
+        box-shadow: 0px 2px 25px 3px grey;
+    }
+    
+    .loginform_bg {
+        height: 635px;
+        width: 100%;
+        background: linear-gradient(to top right, rgba(58, 180, 66, 1) 0%, rgba(253, 198, 29, 0.9948354341736695) 71%, rgba(252, 69, 116, 1) 100%);
+    }
+    
+    .form_log {
+        margin-top: 25%;
+        background-color: rgba(115, 236, 15, 0.3);
+        padding: 30px;
+        border: 1px solid lime;
+        border-radius: 5px;
+        box-shadow: 0px 2px 25px 3px grey;
+    }
+    
+    .loginbtn {
+        width: 100%;
+        padding: 5px;
+        font-size: 20px;
+        border-radius: 5px;
+    }
+    
+    .btn-lime {
+        background-color: lime;
+        color: #fff;
+        font-size: 15px;
+    }
+    
+    .rgb {
+        background: linear-gradient(to top right, rgba(58, 180, 66, 1) 0%, rgba(253, 198, 29, 0.9948354341736695) 71%, rgba(252, 69, 116, 1) 100%);
+        color: #fff;
+    }
+    
+    .green {
+        background-color: rgb(169, 204, 153);
+    }
+
+
+a.btn.xs {
+    padding: 4px;
+    font-size: 12px;
+  
+ }
+ /*Student classes*/
+ /*this is for select button*/
+select.form-select.form-select-lg {
+    width: 100%;
+}

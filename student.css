@@ -1,0 +1,12 @@
+.font{
+    padding: auto;
+    margin: auto;
+    font-size: 14px;
+}
+.btn.xs{
+    padding: 4px;
+    margin: 0px;
+    font-size: 10px;
+}
+
+
