@@ -60,3 +60,6 @@ $result = mysqli_query($connection,$show);
     </div>
 </div>
 </div>
+<?php 
+include('DBfooter.php');
+?>
