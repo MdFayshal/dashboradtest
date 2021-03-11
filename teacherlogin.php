@@ -1,11 +1,3 @@
-<?php include('footer.php')?>
-<?php
-    session_start();
-    if(isset($_SESSION['teacheremail'])){
-
-         header("location:t_index.php");
-     }
-?>
 
 <?php 
 include('header.php');

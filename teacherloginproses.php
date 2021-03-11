@@ -16,11 +16,10 @@ if (isset($_POST['t_login'])){
     if($rownum>0){
      while( $row = mysqli_fetch_assoc($res)){
        session_start();
-       //$_SESSION['username']        = $row['full_name'];
        $_SESSION['teacheremail']    = $row['email'];
-       $_SESSION['password']        = $row['password'];
 
-       header("location:t_index.php");
+
+       header("location:index.php");
      }
     
     }else{
@@ -52,3 +51,4 @@ if (isset($_POST['t_login'])){
     }
 */
 ?>
+<?php include('session.php');?>

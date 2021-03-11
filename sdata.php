@@ -1,13 +1,19 @@
-<?php 
-include('session.php');
-include('DBheader.php');
-require_once('database.php');
-?>
 <?php
 
-$id=$_GET['id'];
+    include('DBheader.php');
+    require_once('database.php');
+    include('session.php');   
+?>     
+<?php
 
-$show = "SELECT * FROM students WHERE id = $id";
+$name = $_SESSION['roll_number'];
+//$semail =$_SESSION['email'];
+
+
+
+
+$show = "SELECT * FROM `students` WHERE roll_number = '$name'";
+//$show = "SELECT * FROM `students` WHERE id = $id";
 $result = mysqli_query($connection,$show); 
 
 ?>
@@ -16,12 +22,13 @@ $result = mysqli_query($connection,$show);
 <div class=" container-fluid">
 <div class="container   p-5 mt-5">
     <div class="jumbotron green">
-    <h3 class="display-4 text-center bg-dark text-light py-1 mb-3"><?php echo"Student ID - ".$id;?></h3>
-        <table class="table table-light table-striped text-info">
-        <tbody>
-        <?php
+    <?php
                 while ($sh=mysqli_fetch_assoc($result)){
             ?>
+    <h3 class="display-4 text-center bg-dark text-light py-1 mb-3"><?php echo"Student ID - ".$sh['roll_number'];?></h3>
+        <table class="table table-light table-striped text-info">
+        <tbody>
+   
             <tr>
             <th>First Name</th>
             <td><?php echo $sh['first_name'];?></td>
@@ -61,3 +68,5 @@ $result = mysqli_query($connection,$show);
     </div>
 </div>
 </div>
+
+<?php include('DBfooter.php')?>

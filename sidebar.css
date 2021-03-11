@@ -69,11 +69,12 @@ span {
 }
 
 #sidebar.active {
-    min-width: 80px;
-    max-width: 80px;
+    min-width: 90px;
+    max-width: 90px;
     text-align: center;
+    font-size: 0.90em;
+   
 }
-
 #sidebar.active .sidebar-header h3,
 #sidebar.active .CTAs {
     display: none;
@@ -101,7 +102,7 @@ span {
 }
 
 #sidebar.active ul ul a {
-    padding: 10px !important;
+    padding: 12px !important;
 }
 
 #sidebar.active .dropdown-toggle::after {
@@ -162,7 +163,7 @@ a[data-toggle="collapse"] {
 }
 
 ul ul a {
-    font-size: 0.9em !important;
+    font-size: 0.8em !important;
     padding-left: 30px !important;
     background: orange;
 }
@@ -238,7 +239,7 @@ a.article:hover {
         display: block;
     }
     #sidebar ul li a {
-        padding: 20px 10px;
+        padding: 10px 10px;
     }
     #sidebar ul li a span {
         font-size: 0.85em;

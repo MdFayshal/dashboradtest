@@ -1,6 +1,7 @@
 <?php 
 include('DBheader.php');
 require_once('database.php');
+include('session.php');
 ?>
 
 
@@ -16,10 +17,9 @@ $result = mysqli_query($connection,$info);
         <div class="jumbotron">
             <h1 class="display-4 text-center text-light py-2 bg-dark mb-5">Admin list</h1>
         
-            <table class="table table-light table-striped text-info">
+            <table class="table table-sm table-light table-striped text-info table-hover">
                 <thead>
                     <tr>
-                    <th scope="col"class="text-info">Id</th>
                     <th scope="col">User Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Password</th>
@@ -29,13 +29,12 @@ $result = mysqli_query($connection,$info);
                 <?php
                 while ($lop=mysqli_fetch_assoc($result)){
                 ?>
-                    <tr>
-                    <th scope="row"class="text-info"><?php echo $lop['id'];?></th>
+                    <tr class="pl-1">
                     <td class="text-info "><?php echo $lop['full_name'];?></td>
                     <td class="text-info "><?php echo $lop['email'];?></td>
                     <td class="text-info "><?php echo $lop['addmin_pass'];?></td>
     
-                    <td class="text-info ">
+                    <td class="text-info float-right ">
                     <a href="adminedit.php?id=<?php echo $lop['id'];?>" class="btn btn-sm btn-warning">Edit</a> ||
                     <a href="admindelete.php?id=<?php echo $lop['id']?>" class="btn btn-sm btn-danger text-light">Delete</a> ||
                     <a href="showadmin.php?id=<?php echo $lop['id'];?>" class="btn btn-sm btn-success">Show</a>

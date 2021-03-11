@@ -3,10 +3,10 @@ include('DBheader.php');
 require_once('database.php');
 ?>
     <div class="row  text-light">
-            <div class="col-sm-2">
+            <div class="col-sm-3">
             </div>
 
-            <div class="col-sm-8 ">
+            <div class="col-sm-6 ">
                 <div class="form_reg">
                     <h2 class="text-center p-3 rgb">Teacher Registration</h2>
                     <form action="teacherregiproses.php" class="form-horizontal " method="POST">
@@ -36,7 +36,7 @@ require_once('database.php');
                 </div>
             </div>
 
-            <div class="col-sm-2">
+            <div class="col-sm-3">
             </div>
         </div>
     

@@ -1,14 +1,17 @@
 <?php 
+
 include('DBheader.php');
+
 require_once('database.php');
+
 ?>
 
     <div class="container form_bg">
         <div class="row  text-light">
-            <div class="col-sm-4">
+            <div class="col-sm-3">
             </div>
 
-            <div class="col-sm-4 ">
+            <div class="col-sm-5 offset-1 ">
                 <div class="form_reg">
                     <h2 class="text-center pb-2">Admin Registration</h2>
                     <form action="superadmininsert.php" class="form-horizontal " method="POST">
@@ -30,7 +33,7 @@ require_once('database.php');
                 </div>
             </div>
 
-            <div class="col-sm-4">
+            <div class="col-sm-3">
             </div>
         </div>
     </div>

@@ -1,13 +1,8 @@
-<?php
-    session_start();
-    if(!isset($_SESSION['username'])){
 
-         header("location:login.php");
-     }
-?>
-
+<?php include('session.php');?>
 <?php
 require_once('database.php');
+
 
 if(isset($_POST['teachersignup'])){
 $first_name   = $_POST['first_name'];

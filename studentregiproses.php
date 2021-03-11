@@ -1,11 +1,5 @@
-<?php
-    session_start();
-    if(!isset($_SESSION['username'])){
 
-         header("location:login.php");
-     }
-?>
-
+<?php include('session.php')?>
 <?php
 require_once('database.php');
 

@@ -1,5 +1,7 @@
 <?php
+include('session.php');
 require_once('database.php');
+
 $id = $_GET['id'];
 
 $delete="DELETE FROM `admin` WHERE `admin`.`id` = $id";

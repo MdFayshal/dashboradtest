@@ -1,21 +1,24 @@
-<?php 
- 
-include('DBheader.php');
-require_once('database.php');
-include('session.php');
+<?php
+
+     include('DBheader.php');
+     require_once('database.php');
+  
 ?>
 
 <?php 
-$info = "SELECT * FROM teachers";
-$result = mysqli_query($connection,$info); 
+$teacher = $_SESSION['teacheremail'];
+ $info   = "SELECT * FROM teachers WHERE email ='$teacher' ";//$teacher decleared in DBheader
+ $result = mysqli_query($connection,$info); 
 ?>
 
 
 
-    <div class=" p-5">
-            <h1 class="display-4 text-center text-light py-2 rgb mb-5">Teacher list</h1>
-        
-            <table class="table table-responsive-sm table-sm table-light table-striped text-info table-hover ">
+    <div class="p-5">
+    <h1 class="display-4 text-center text-light py-2 rgb mb-5">My Detailes</h1>
+
+
+                    
+            <table class="table table-light table-striped text-info">
                 <thead>
                     <tr>
                     <th scope="col">First Name</th>
@@ -27,6 +30,9 @@ $result = mysqli_query($connection,$info);
                 </thead>
                 <tbody>
                 <?php
+                // while ($lop=mysqli_fetch_assoc($result)){
+                ?>
+                    <?php
                 while ($lop=mysqli_fetch_assoc($result)){
                 ?>
                     <tr>
@@ -36,17 +42,13 @@ $result = mysqli_query($connection,$info);
                     <td class="text-info "><?php echo $lop['email'];?></td>
                     <td class="text-info "><?php echo $lop['teacher_pass'];?></td>
     
-                    <td class="text-info float-right">
-                    <a href="teacheredit.php?id=<?php echo $lop['id'];?>" class="btn btn-sm btn-warning">Edit</a> ||
-                    <a href="teacherdelete.php?id=<?php echo $lop['id']?>" class="btn btn-sm btn-danger text-light">Delete</a> ||
-                    <a href="teachershow.php?id=<?php echo $lop['id'];?>" class="btn btn-sm btn-success">Show</a>
+                    <td class="text-info ">
+                     <a href="teachershow.php?id=<?php echo $lop['id'];?>" class="btn btn-sm btn-success">Show</a>
                     </td>
                     </tr>
                 <?php }?>
                 </tbody>
             </table>
     </div>
-
-
-
-<?php include('DBfooter.php')?>
+           
+       <?php include('DBfooter.php') ?>

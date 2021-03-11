@@ -1,33 +1,59 @@
-<?php
+ <?php
+// require_once('database.php');
+
+
+// if (isset($_POST['login'])){
+//     $username = $_POST['name'];
+//     $spass = $_POST['password'];
+    
+   
+//     $query = " select * from students where ((roll_number='$username' || email='$username') && student_pass='$spass')" or die('Loading failed');
+
+//     $res = mysqli_query($connection,$query);
+//    // $row = mysqli_fetch_assoc($res);
+//     $rownum=mysqli_num_rows($res);
+//     if($rownum>0){
+//      while( $row = mysqli_fetch_assoc($res)){
+//        session_start();
+//        $_SESSION['roll_number'] = $row['roll_number'];
+//        $_SESSION['semail']    = $row['email'];
+//       // $_SESSION['password'] = $row['password'];
+
+//        header("location:index.php");
+//      }
+    
+//     }else{
+//       echo'Error : Login Failed error321';
+//     }
+//   }
+
 require_once('database.php');
 
 
 if (isset($_POST['slogin'])){
     $sname = $_POST['name'];
     $spass = $_POST['password'];
-    
+  
    
-    $query = " select * from `students` where ((roll_number='$sname' || email='$sname') && student_pass='$spass')" or die('Loading failed Error query');
-
+    $query = " SELECT * FROM `students` WHERE ((email='$sname' || roll_number='$sname') && student_pass='$spass')" ;
     $res = mysqli_query($connection,$query);
    // $row = mysqli_fetch_assoc($res);
     $rownum = mysqli_num_rows($res);
     if($rownum>0){
      while( $row = mysqli_fetch_assoc($res)){
        session_start();
-       $_SESSION['id'] = $row['id'];
        $_SESSION['roll_number'] = $row['roll_number'];
-       $_SESSION['studentemail']    = $row['email'];
-       $_SESSION['password'] = $row['password'];
-       $_SESSION['first_name'] = $row['first_name'];
-       $_SESSION['last_name'] = $row['last_name'];
-       $_SESSION['phone_number'] = $row['mobile'];
+       $_SESSION['s.email']    = $row['email'];
 
-       header("location:s_index.php");
+       //$_SESSION['password'] = $row['password'];
+
+
+       header("location:index.php");
      }
     
     }else{
-      echo'Error : Login Failed';
+      echo'Error : Login Failed data not fatch';
     }
   }
 ?>
+<?php include('session.php')?>

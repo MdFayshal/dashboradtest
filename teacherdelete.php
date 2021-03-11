@@ -1,3 +1,4 @@
+<?php include('session.php');?>
 <?php
 require_once('database.php');
 $id = $_GET['id'];

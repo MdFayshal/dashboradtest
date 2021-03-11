@@ -1,6 +1,6 @@
 <?php
 require_once('database.php');
-
+include('session.php');
 
 if (isset($_POST['login'])){
     $username = $_POST['name'];
@@ -16,9 +16,6 @@ if (isset($_POST['login'])){
      while( $row = mysqli_fetch_assoc($res)){
        session_start();
        $_SESSION['username'] = $row['full_name'];
-       $_SESSION['email']    = $row['email'];
-       $_SESSION['password'] = $row['password'];
-
        header("location:index.php");
      }
     

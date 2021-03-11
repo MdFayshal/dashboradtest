@@ -1,13 +1,17 @@
 <?php 
 include('DBheader.php');
 require_once('database.php');
-?>
-<?php
 
-$id=$_GET['id'];
+if(isset($teacher)){
+    $show = "SELECT * FROM teachers WHERE email = '$teacher' ";
+    $result = mysqli_query($connection,$show); 
+        
+}else{
+$id = $_GET['id'];
 
 $show = "SELECT * FROM teachers WHERE id = $id";
 $result = mysqli_query($connection,$show); 
+}
 
 ?>
 
@@ -15,12 +19,13 @@ $result = mysqli_query($connection,$show);
 <div class=" container-fluid">
 <div class="container   p-5 mt-5">
     <div class="jumbotron green">
-    <h3 class="display-4 text-center bg-dark text-light py-1 mb-3"><?php echo"Teacher ID - ".$id;?></h3>
-        <table class="table table-light table-striped text-info">
-        <tbody>
-        <?php
+    <?php
                 while ($sh=mysqli_fetch_assoc($result)){
             ?>
+    <h3 class="display-4 text-center bg-dark text-light py-1 mb-3"><?php echo"Teacher ID - ".$sh['email'];?></h3>
+        <table class="table table-light table-striped text-info">
+        <tbody>
+        
             <tr>
             <th>First Name</th>
             <td><?php echo $sh['first_name'];?></td>
@@ -50,7 +55,7 @@ $result = mysqli_query($connection,$show);
         </tbody>
         </table>   
     <div class="text-end">
-    <a href="teacherlist.php" class="btn btn-info text-light float-right"><i class="fas fa-chevron-left"></i> Back</a>
+    <a href="index.php" class="btn btn-info text-light float-right"><i class="fas fa-chevron-left"></i> Back</a>
     </div>
     </div>
 </div>

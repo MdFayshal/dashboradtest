@@ -6,6 +6,7 @@
     
     .form_reg {
         background-color: rgba(115, 236, 15, 0.3);
+        width: auto;
         padding: 30px;
         border: 1px solid lime;
         border-radius: 5px;
@@ -60,3 +61,16 @@ a.btn.xs {
 select.form-select.form-select-lg {
     width: 100%;
 }
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+
+@media (max-width: 768px) {
+    table{
+        width: auto;
+        font-size: 10px;
+
+    }
+}
+
+

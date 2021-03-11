@@ -1,10 +1,3 @@
-<?php
-    session_start();
-    if(isset($_SESSION['studentemail'])){
-
-         header("location:s_index.php");
-     }
-?>
 
 <?php 
 include('header.php');
@@ -21,7 +14,7 @@ require_once('database.php');
                     <h2 class="text-center pb-2">Student Login</h2>
                     <form action="studentloginproses.php" class="form-horizontal " method="POST">
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">Email or Roll Number</label>
+                            <label for="exampleInputEmail1" class="form-label">Roll Number / Email Address</label>
                             <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                         </div>
                         <div class="mb-3">

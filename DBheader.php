@@ -1,10 +1,4 @@
-<?php
-    session_start();
-    if(!isset($_SESSION['username'])){
-
-         header("location:login.php");
-     }
-?>
+<?php session_start()?>
 <!DOCTYPE html>
 <html>
 
@@ -27,10 +21,11 @@
     <!-- Font Awesome JS -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
     <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
-
+    
 </head>
 
 <body>
+    <?php if(isset($_SESSION['username'])){?>
     <div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
@@ -40,6 +35,7 @@
             </div>
 
             <ul class="list-unstyled components">
+        
                 <li class="active">
                     <a href="#admin" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <i class="fas fa-user-cog"></i>
@@ -47,47 +43,36 @@
                     </a>
                     <ul class="collapse list-unstyled" id="admin">
                         <li>
-                            <a href="adminregi.php">NewAdmin</a>
+                            <a href="adminregi.php">New Admin</a>
                             
                         </li>
                         <li>
-                            <a href="adminlist.php">AdminList</a>
-                        </li>
-                        <li>
-                            <li>
-                                <a href="#subadmin" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                                <i class="fas fa-users-cog"></i>
-                                SubAdmin
-                                </a>
-                                <ul class="collapse list-unstyled" id="subadmin">
-                                    <li>
-                                        <a href="teacherlogin.php">Teacherlogin</a>
-                                
-                                    </li>
-                                    <li>
-                                        <a href="studentlogin.php">Studentlogin</a>
-                                    </li>
-                                </ul>
-                        
-                            </li>
+                            <a href="adminlist.php">Admin List</a>
                         </li>
                     </ul>
                     
                 </li>
+ 
+
+    <!--Teacher-->
+    
                 <li>
                     <a href="#teacher" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fas fa-user-tie"></i>
                         Teacher
                     </a>
                     <ul class="collapse list-unstyled" id="teacher">
+                  
                         <li>
-                            <a href="teacherlist.php">T.List</a>
-                        </li>
+                            <a href="teacherlist.php">T. List</a>
+                        </li>                  
                         <li>
-                            <a href="teacherregi.php">T.Registration</a>
+                            <a href="teacherregi.php">T. Registration</a>
                         </li>
                     </ul>
                 </li>
+ 
+        <!--Student-->        
                 <li>
                     <a href="#student" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                         <i class="fas fa-user-graduate"></i>
@@ -95,13 +80,128 @@
                     </a>
                     <ul class="collapse list-unstyled" id="student">
                         <li>
-                            <a href="studentlist.php">S.List</a>
+                            <a href="studentregi.php">S. Registration</a>
+                        </li>
+                
+                        <li>
+                            <a href="studentlist.php">S. List</a>
                         </li>
                         <li>
-                            <a href="studentregi.php">S.Registration</a>
+                            <a href="studentmark.php">Input Mark</a>
                         </li>
                         <li>
-                            <a href="markinput.php">Input Mark</a>
+                            <a href="#">Result</a>
+                        </li>                
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-image"></i>
+                        Portfolio
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-question"></i>
+                        FAQ
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-paper-plane"></i>
+                        Contact
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="#" class="download" onClick="pass()"><i class="fa fa-lock"></i>
+Change password</a>
+                </li>
+                <li>
+                    <a href="#" class="article"onClick="page()">button2</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content" class="container">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-orange">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle Sidebar</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link btn btn-info btn-sm text-light ml-1" href="home.php"><i class="fas fa-eye"></i> View Site</a>
+                            </li>
+                            <li class="nav-item">
+                                <a> </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-sm btn-orange text-light ml-1" href="logout.php"><i class="fas fa-sign-out-alt"></i>LogOut</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+<?php }?>
+    <!--Teacher-->
+<?php if(isset($_SESSION['teacheremail'])){?>
+
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3><a href="index.php"><i class="fas fa-home"></i> DashBoard<a></h3>
+                <a href="index.php"><strong><i class="fas fa-home"></i> DB</strong></a>
+            </div>
+
+            <ul class="list-unstyled components">    
+    <!--Teacher-->
+    
+                <li>
+                    <a href="#teacher" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-user-tie"></i>
+                        Teacher
+                    </a>
+                    <ul class="collapse list-unstyled" id="teacher">        
+                        <li>
+                            <a href="tdata.php">My Details</a>
+                        </li>
+                    
+                        <li>
+                            <a href="teacherregi.php">T. Registration</a>
+                        </li>
+                    </ul>
+                </li>
+ 
+        <!--Student-->        
+                <li>
+                    <a href="#student" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-user-graduate"></i>
+                        Student
+                    </a>
+                    <ul class="collapse list-unstyled" id="student">
+                        <li>
+                            <a href="studentregi.php">S. Registration</a>
+                        </li>
+                
+                        <li>
+                            <a href="studentlist.php">S. List</a>
+                        </li>
+                        <li>
+                            <a href="studentmark.php">Input Mark</a>
                         </li>
                         <li>
                             <a href="#">Result</a>
@@ -156,7 +256,7 @@ Change password</a>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="nav navbar-nav ml-auto">
                             <li class="nav-item active">
-                                <a class="nav-link btn btn-info btn-sm text-light ml-1" href="index.php"><i class="fas fa-eye"></i> View Site</a>
+                                <a class="nav-link btn btn-info btn-sm text-light ml-1" href="home.php"><i class="fas fa-eye"></i> View Site</a>
                             </li>
                             <li class="nav-item">
                                 <a> </a>
@@ -168,6 +268,107 @@ Change password</a>
                     </div>
                 </div>
             </nav>
+
+<?php }?>
+       <!--Student--> 
+
+<?php if(isset($_SESSION['roll_number'])){?>
+    <div class="wrapper">
+        <!-- Sidebar  -->
+        <nav id="sidebar">
+            <div class="sidebar-header">
+                <h3><a href="index.php"><i class="fas fa-home"></i> DashBoard<a></h3>
+                <a href="index.php"><strong><i class="fas fa-home"></i> DB</strong></a>
+            </div>
+
+            <ul class="list-unstyled components">
+
+        <!--Student-->        
+                <li>
+                    <a href="#student" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                        <i class="fas fa-user-graduate"></i>
+                        Student
+                    </a>
+                    <ul class="collapse list-unstyled" id="student">
+                        <li>
+                            <a href="studentregi.php">S. Registration</a>
+                        </li>
+                        <li>
+                            <a href="#">Result</a>
+                        </li>
+                   
+                        <li>
+                            <a href="sdata.php">My Result</a>
+                        </li>
+                 
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-image"></i>
+                        Portfolio
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-question"></i>
+                        FAQ
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fas fa-paper-plane"></i>
+                        Contact
+                    </a>
+                </li>
+            </ul>
+
+            <ul class="list-unstyled CTAs">
+                <li>
+                    <a href="#" class="download" onClick="pass()"><i class="fa fa-lock"></i>
+Change password</a>
+                </li>
+                <li>
+                    <a href="#" class="article"onClick="page()">button2</a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Page Content  -->
+        <div id="content" class="container">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-orange">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle Sidebar</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link btn btn-info btn-sm text-light ml-1" href="home.php"><i class="fas fa-eye"></i> View Site</a>
+                            </li>
+                            <li class="nav-item">
+                                <a> </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link btn btn-sm btn-orange text-light ml-1" href="logout.php"><i class="fas fa-sign-out-alt"></i>LogOut</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+<?php }?>
+
+<?php include('session.php')?>
+
+
 <!-- Main Containt -->            
             <section class="" id="main">
           
