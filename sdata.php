@@ -6,21 +6,18 @@
 ?>     
 <?php
 
-$name = $_SESSION['roll_number'];
-//$semail =$_SESSION['email'];
+$roll  = $_SESSION['roll_number'];
+$class = $_SESSION['class'];
 
+$show = "SELECT students.id,students.first_name,students.last_name,classes.classname,students.roll_number,students.mobile,students.email,students.student_pass FROM `students` INNER JOIN classes ON students.class_id=classes.id WHERE `roll_number` = '$roll'AND `class_id`='$class'";
 
-
-
-$show = "SELECT * FROM `students` WHERE roll_number = '$name'";
-//$show = "SELECT * FROM `students` WHERE id = $id";
 $result = mysqli_query($connection,$show); 
 
 ?>
 
 
-<div class=" container-fluid">
-<div class="container   p-5 mt-5">
+<div>
+<div >
     <div class="jumbotron green">
     <?php
                 while ($sh=mysqli_fetch_assoc($result)){
@@ -45,6 +42,10 @@ $result = mysqli_query($connection,$show);
 
             </tr>
             <tr>
+            <th>Class Name</th>
+            <td><?php echo $sh['classname'];?></td>
+
+            </tr>
             <th>Roll Number</th>
             <td><?php echo $sh['roll_number'];?></td>
 
@@ -61,9 +62,38 @@ $result = mysqli_query($connection,$show);
             </tr>
         <?php }?>
         </tbody>
-        </table>   
+        </table>
+        <?php 
+$info = "SELECT results.subjects,results.mark FROM results WHERE results.roll_number='$roll'AND results.class_id='$class'";
+$result = mysqli_query($connection,$info); 
+?>
+
+
+
+    <div>
+            <h1 class="display-5 text-center bg-dark text-light py-1">Result</h1>
+        
+            <table class="table  table-sm  table-light table-striped table-hover text-info pl-2">
+                <thead>
+                    <tr class="font">
+                    <th scope="col" class="pl-5">Subjects</th>
+                    <th scope="col">Mark</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php
+                while ($lop=mysqli_fetch_assoc($result)){
+                ?>
+                    <tr class=" text-info">
+                    <td class="pl-5"><?php echo $lop['subjects'];?></td>
+                    <td><?php echo $lop['mark'];?></td>
+                    </tr>
+                <?php }?>
+                </tbody>
+            </table>
+    </div>   
     <div class="text-end">
-    <a href="studentlist.php" class="btn btn-info text-light float-right"><i class="fas fa-chevron-left"></i> Back</a>
+    <a href="index.php" class="btn btn-info text-light float-right"><i class="fas fa-chevron-left"></i> Back</a>
     </div>
     </div>
 </div>

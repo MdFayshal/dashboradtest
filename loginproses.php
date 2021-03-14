@@ -1,6 +1,13 @@
 <?php
+//adminpermission
+session_start();
+if(isset($_SESSION['username'])){
+}
+else{
+    header('location:home.php');
+}
 require_once('database.php');
-include('session.php');
+
 
 if (isset($_POST['login'])){
     $username = $_POST['name'];

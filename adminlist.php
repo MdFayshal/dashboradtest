@@ -1,7 +1,10 @@
-<?php 
+<?php
+
+
 include('DBheader.php');
+  //Database connection
 require_once('database.php');
-include('session.php');
+
 ?>
 
 
@@ -51,4 +54,4 @@ $result = mysqli_query($connection,$info);
 </div>
 
 
-<?php include('DBfooter.php')?>
+<?php include('DBfooter.php') ?>

@@ -30,7 +30,7 @@ require_once('database.php');
                             </div> 
                                                   
                     </form>
-                    <form action="resultinputproses.php" class="form-horizontal " method="POST">
+                    <form action="studentmark.php" class="form-horizontal " method="POST">
                     <div class="md-4">
                             <label for="exampleInputname" class="form-label">Name</label>
                             <input type="text" name="name" class="form-control" id="exampleInputEmail1">
@@ -43,28 +43,28 @@ require_once('database.php');
                         
 
                     <?php 
-                        $id = null;                      
+                        $class = null;                      
                         if(isset($_POST['submit'])){
                             
-                            $id = $_POST['classes'];  // Storing Selected Value In Variable
-                           // echo "You have selected class : " .$id;  // Displaying Selected Value
+                            $class = $_POST['classes'];
+                           $_SESSION['classes'] = $class;
                             }
-                        $info = "SELECT * FROM subjects WHERE classid = '$id' ";
+                        $info = "SELECT * FROM subjects WHERE classid = '$class' ";
                         $res = mysqli_query($connection,$info); 
-                       //  $sub=mysqli_fetch_all($res,MYSQLI_ASSOC);
-                        //  print_r($sub);
+                  
                     ?>
-                    <label class="form-label" style="font-size:18px" ><b>You have Selected Class : <?php echo $id;?></b></label>
+                    <label class="form-label" style="font-size:18px" name="<?php echo $class;?>" ><b>You have Selected Class : <?php echo $class;?></b></label>
                        
                     <?php
-                        while($sub=mysqli_fetch_object($res)){
+                        while($sub=mysqli_fetch_assoc($res)){
+                    
                     ?> 
                         <div class="input-group input-group-mb mb-3 text-center">
-                        <span class="input-group-text " id="inputGroup-sizing-sm" style="width:110px;"><?php echo ucfirst($sub->subjectname);?></span>
-                <input type="text" class="form-control" style="width:25px;" placeholder="" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm">
+                        <span class="input-group-text " id="inputGroup-sizing-sm" style="width:110px;"><?php echo ucfirst($sub['subjectname']);?></span>
+                <input type="text" class="form-control" style="width:25px;" placeholder="class <?php echo ucfirst($sub['subjectname']);?>" name="mark[<?php echo ucfirst($sub['subjectname']);?>][]">
                         </div>
                         <?php }?>
-                        <button type="submit" name="mark" class=" loginbtn btn-warning text-light">submit</button>
+                        <button type="submit" name="msubmit" class=" loginbtn btn-warning text-light">submit</button>
                         <a href="studenresult.php" type="submit" class="btn  btn-secondary loginbtn my-2">Back</a>
                     </form>
 
@@ -74,7 +74,37 @@ require_once('database.php');
             </div>
 
 </div>
+<?php
 
 
 
+if(isset($_POST['msubmit'])){
+
+        $class = $_SESSION['classes'];
+        $name = $_POST['name'];
+        $roll = $_POST['roll'];
+        $data = $_POST['mark'];
+
+        foreach($data as $subjects => $value){
+            
+            
+            foreach($value as $key=>$marks ){
+           
+       
+
+         $insert="INSERT INTO `results` ( `subjects`, `class_id`, `mark`, `roll_number`) VALUES ('$subjects', '$class', '$marks', '$roll')";
+
+
+ $result = mysqli_query($connection,$insert) or die(mysqli_error($connection));
+ if($result==false){
+     echo "connection failed";
+ }
+
+}
+
+}
+}
+
+
+?>
 <?php include('DBfooter.php')?>

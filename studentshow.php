@@ -6,7 +6,7 @@ require_once('database.php');
 
 $id=$_GET['id'];
 
-$show = "SELECT * FROM students WHERE id = $id";
+$show = "SELECT students.id,students.first_name,students.last_name,students.mobile,classes.classname,students.roll_number,students.email,students.student_pass FROM students INNER JOIN classes ON students.class_id=classes.id WHERE students.id = $id";
 $result = mysqli_query($connection,$show); 
 
 ?>
@@ -34,6 +34,11 @@ $result = mysqli_query($connection,$show);
             <tr>
             <th>Phone Number</th>
             <td><?php echo $sh['mobile'];?></td>
+
+            </tr>
+            <tr>
+            <th>Class Name</th>
+            <td><?php echo $sh['classname'];?></td>
 
             </tr>
             <tr>

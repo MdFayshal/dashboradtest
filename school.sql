@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 11, 2021 at 05:40 PM
+-- Generation Time: Mar 14, 2021 at 07:14 PM
 -- Server version: 8.0.21
 -- PHP Version: 7.3.21
 
@@ -41,11 +41,7 @@ CREATE TABLE IF NOT EXISTS `admin` (
 --
 
 INSERT INTO `admin` (`id`, `full_name`, `email`, `addmin_pass`) VALUES
-(1, 'admin', 'admin@gmail.com', 'admin'),
-(2, 'shabbir', 'shabbir@gmail.com', '1234'),
-(5, 'admin2', 'teacher@gmail.com', '11111'),
-(6, 'admin2', 'teacher@gmail.com', '1234'),
-(7, 'admin2', 'teacher@gmail.com', '123456');
+(1, 'admin', 'admin@gmail.com', 'admin');
 
 -- --------------------------------------------------------
 
@@ -85,7 +81,23 @@ CREATE TABLE IF NOT EXISTS `results` (
   `mark` int DEFAULT NULL,
   `roll_number` int DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=99 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+--
+-- Dumping data for table `results`
+--
+
+INSERT INTO `results` (`id`, `subjects`, `class_id`, `mark`, `roll_number`) VALUES
+(93, 'Math', '4', 60, 4001),
+(94, 'Science', '4', 60, 4001),
+(95, 'Bangla', '1', 80, 1001),
+(96, 'English', '1', 80, 1001),
+(97, 'Math', '1', 80, 1001),
+(98, 'Science', '1', 80, 1001),
+(92, 'English2nd', '4', 60, 4001),
+(91, 'English1st', '4', 60, 4001),
+(90, 'Bangla2nd', '4', 60, 4001),
+(89, 'Bangla1st', '4', 60, 4001);
 
 -- --------------------------------------------------------
 
@@ -102,18 +114,19 @@ CREATE TABLE IF NOT EXISTS `students` (
   `roll_number` int DEFAULT NULL,
   `email` varchar(50) DEFAULT NULL,
   `student_pass` varchar(50) DEFAULT NULL,
+  `class_id` int NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=17 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `students`
 --
 
-INSERT INTO `students` (`id`, `first_name`, `last_name`, `mobile`, `roll_number`, `email`, `student_pass`) VALUES
-(7, 'sab', 'df', '01222455587', 1003, 'adminstrt@gmail.com', '1234'),
-(4, 'm.s.', 'raju', '9876543210', 1002, 'student@gmail.com', ' 1234'),
-(1, 'md', 'fayshal', '1234567890', 1001, 'admin@gmail.com', '1234'),
-(12, 'sab', 'df', '01222455587', 10054, 'admin@gmail.com', '5555555');
+INSERT INTO `students` (`id`, `first_name`, `last_name`, `mobile`, `roll_number`, `email`, `student_pass`, `class_id`) VALUES
+(1, 'md', 'fayshal', '1234567890', 1001, 'admin@gmail.com', '1234', 1),
+(16, 'Shabbir ', 'Md. Fayshal', '01222455587 ', 4001, 'raju@gmail.com', '1234 ', 4),
+(14, 'sam', 'hasan', '01254544', 3001, 'teachers@gmail.com', '  1234', 3),
+(15, 'kali ', 'bayu', '014578932 ', 2001, 'admintest@gmail.com', '1234 ', 2);
 
 -- --------------------------------------------------------
 
@@ -170,19 +183,15 @@ CREATE TABLE IF NOT EXISTS `teachers` (
   `email` varchar(50) DEFAULT NULL,
   `teacher_pass` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- Dumping data for table `teachers`
 --
 
 INSERT INTO `teachers` (`id`, `first_name`, `last_name`, `mobile`, `email`, `teacher_pass`) VALUES
-(2, 'm.s.', 'raju', '9876543210', 'msraju@gmail.com', '1234'),
-(3, 'md', 'fayshal', '1234567890', 'teacher@gmail.com', '1234'),
-(4, 'sab', 'df', '01222455587', 'teacher1@gmail.com', '1234'),
-(5, 'sab', 'df', '01222455587', 'teacher1@gmail.com', '1234'),
-(7, 'sab', 'df', '01222455587', 'adminstrt@gmail.com', '999999999999'),
-(8, 'sab', 'df', '01222455587', 'adminstrt@gmail.com', '111111111111111111');
+(10, 'sam', 'hasan', '01254544', 'teacher@gmail.com', '1234'),
+(11, 'ms', 'raju', '0123456987', 'raju@gmail.com', '1234');
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

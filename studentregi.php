@@ -24,6 +24,17 @@ require_once('database.php');
                             <input type="text" name="number" class="form-control" id="exampleInputEmail1">
                         </div>
                         <div class="mb-2">
+                           <label for="exampleInputClasses" class="form-label pr-2 mr-3" style="font-size:18px;">Select Class</label>
+                            <select name="class" class="form-select  form-select-mb py-1 " >
+                                <option class="text"  value="Class Not Selected.">Select Class</option>
+                                <option value="1" >One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                                <option value="4">four</option>
+                                <option value="5">five</option>
+                            </select>
+                           </div>
+                        <div class="mb-2">
                             <label for="exampleInputEmail1" class="form-label">Roll Number</label>
                             <input type="text" name="roll_number" class="form-control" id="exampleInputEmail1">
                         </div>

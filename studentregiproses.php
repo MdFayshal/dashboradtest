@@ -10,10 +10,10 @@ $number            = $_POST['number'];
 $roll_number       = $_POST['roll_number'];
 $email             = $_POST['email'];
 $student_pass      = $_POST['student_pass'];
+$class             = $_POST['class'];
 
-
-$info = "INSERT INTO students (first_name,last_name,mobile,roll_number,email,student_pass) VALUES('$first_name','$last_name','$number','$roll_number','$email','$student_pass')";
-
+//$info = "INSERT INTO students (first_name,last_name,mobile,roll_number,email,student_pass,class_id) VALUES('$first_name','$last_name','$number','$roll_number','$email','$student_pass','$class')";
+$info ="INSERT INTO `students` (`first_name`, `last_name`, `mobile`, `roll_number`, `email`, `student_pass`, `class_id`) VALUES ('$first_name ', '$last_name', '$number ', '$roll_number', '$email', '$student_pass ', '$class ')";
 $result = mysqli_query($connection,$info) or die(mysqli_error($connection));
 
 if($result == True){

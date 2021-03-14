@@ -1,4 +1,4 @@
-<?php session_start()?>
+<?php session_start();?>
 <!DOCTYPE html>
 <html>
 
@@ -87,6 +87,9 @@
                             <a href="studentlist.php">S. List</a>
                         </li>
                         <li>
+                            <a href="getresult.php">Get Result</a>
+                        </li>
+                        <li>
                             <a href="studentmark.php">Input Mark</a>
                         </li>
                         <li>
@@ -155,9 +158,9 @@ Change password</a>
                 </div>
             </nav>
 
-<?php }?>
+
     <!--Teacher-->
-<?php if(isset($_SESSION['teacheremail'])){?>
+<?php }elseif(isset($_SESSION['teacheremail'])){?>
 
     <div class="wrapper">
         <!-- Sidebar  -->
@@ -199,6 +202,9 @@ Change password</a>
                 
                         <li>
                             <a href="studentlist.php">S. List</a>
+                        </li>
+                        <li>
+                            <a href="getresult.php">Get Result</a>
                         </li>
                         <li>
                             <a href="studentmark.php">Input Mark</a>
@@ -258,6 +264,9 @@ Change password</a>
                             <li class="nav-item active">
                                 <a class="nav-link btn btn-info btn-sm text-light ml-1" href="home.php"><i class="fas fa-eye"></i> View Site</a>
                             </li>
+                            <li class="nav-item active">
+                                <a class="nav-link btn btn-secondary btn-sm text-light ml-1" href="teacherchangepass.php"><i class="fa fa-lock"></i> Change Password</a>
+                            </li>
                             <li class="nav-item">
                                 <a> </a>
                             </li>
@@ -269,10 +278,10 @@ Change password</a>
                 </div>
             </nav>
 
-<?php }?>
-       <!--Student--> 
+       <!--END teacher--> 
 
-<?php if(isset($_SESSION['roll_number'])){?>
+<?php }elseif(isset($_SESSION['roll_number'])){?>
+<!--START Student--->
     <div class="wrapper">
         <!-- Sidebar  -->
         <nav id="sidebar">
@@ -300,6 +309,7 @@ Change password</a>
                         <li>
                             <a href="sdata.php">My Result</a>
                         </li>
+                        
                  
                     </ul>
                 </li>
@@ -321,17 +331,9 @@ Change password</a>
                         Contact
                     </a>
                 </li>
+                
             </ul>
 
-            <ul class="list-unstyled CTAs">
-                <li>
-                    <a href="#" class="download" onClick="pass()"><i class="fa fa-lock"></i>
-Change password</a>
-                </li>
-                <li>
-                    <a href="#" class="article"onClick="page()">button2</a>
-                </li>
-            </ul>
         </nav>
 
         <!-- Page Content  -->
@@ -357,6 +359,9 @@ Change password</a>
                                 <a> </a>
                             </li>
                             <li class="nav-item">
+                                <a href="changestudentpass.php" class=" nav-link btn btn-sm text-light btn-secondary ml-1"><i class="fa fa-lock"></i> Change password</a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link btn btn-sm btn-orange text-light ml-1" href="logout.php"><i class="fas fa-sign-out-alt"></i>LogOut</a>
                             </li>
                         </ul>
@@ -365,9 +370,6 @@ Change password</a>
             </nav>
 
 <?php }?>
-
-<?php include('session.php')?>
-
 
 <!-- Main Containt -->            
             <section class="" id="main">

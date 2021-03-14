@@ -9,9 +9,9 @@ $result = mysqli_query($connection,$show);
 ?>
 
 
-<div class="container my-5 ">
-    <div class="jumbotron rgb py-5 ">
-        <h1 class="display-4 text-center text-light bg-info py-3 my-5">EditForm</h1>
+<div class="">
+    <div class="jumbotron rgb ">
+        <h1 class="display-4 text-center text-light rgb  mb-5">EditForm</h1>
         <form class="form-horizontal offset-3" action="studentedit.php" method="GET" name="form">
         <?php
                 while ($sh = mysqli_fetch_assoc($result)){
@@ -40,6 +40,19 @@ $result = mysqli_query($connection,$show);
                 <input type="text" class="form-control" name="number" value="<?php echo $sh['mobile'];?>">
                 </div>
             </div>
+            <div class="row ">
+                           <label for="exampleInputClasses" class="form-label col-sm-2 col-form-label text-info mb-3" style="font-size:18px;">Select Class</label>
+                            <div class="col-sm-6">
+                            <select name="class" class="form-select  form-select-mb py-1 " >
+                                <option class="text"  value="Class Not Selected."><?php echo $sh['class_id'];?></option>
+                                <option value="1" >One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                                <option value="4">four</option>
+                                <option value="5">five</option>
+                            </select>
+                            </div>
+                           </div>
             <div class="row mb-3">
                 <label class="col-sm-2 col-form-label text-info ">Roll Number</label>
                 <div class="col-sm-6">
@@ -80,9 +93,10 @@ if(isset($_GET["submit"])){
     $email            = $_GET['email'];
     $studentpass      = $_GET['studentpass'];
     $id               = $_GET['id'];
+    $class            = $_GET['class'];    
 
 
-    $update = "UPDATE students SET first_name = '$first_name',last_name = '$last_name',mobile = '$number',roll_number='$roll_number', email = '$email',student_pass=' $studentpass' WHERE id = $id";
+    $update = "UPDATE students SET first_name = '$first_name',last_name = '$last_name',mobile = '$number',class_id='$class',roll_number='$roll_number', email = '$email',student_pass=' $studentpass' WHERE id = $id";
     $updated = mysqli_query($connection,$update);
 
     if($updated){
